@@ -21,3 +21,5 @@ Route::post('model/account/postRegister','Mycontroller@postRegister')->name("pos
 Route::get('model/accessories/getDataAccessories','Mycontroller@getDataAccessories');
 
 Route::get('model/accessories/getDataAccessoriesAll','Mycontroller@getDataAccessoriesAll');
+
+Route::post('model/vehicleInformation/checkAcount','Mycontroller@checkAcount')->name("checkAcount");

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\account;
+use App\verhicleInfomation;
 use App\accessories;
 class Mycontroller extends Controller
 {
@@ -37,5 +38,12 @@ class Mycontroller extends Controller
     	if($tableRegister){
     		echo "Success";
     	}
+    }
+    //kiểm tra tai khoan đã có dk thông tin xe chưa
+    public function checkAcount(Request $request){
+        $table=verhicleInfomation::where('idacount',$request->idAcount)->count();
+        if($table>0){
+            echo "Success";
+        }
     }
 }
