@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\account;
 use App\verhicleInfomation;
 use App\accessories;
+use App\putforservices;
 class Mycontroller extends Controller
 {
 // dang nhap
@@ -43,7 +44,31 @@ class Mycontroller extends Controller
     public function checkAcount(Request $request){
         $table=verhicleInfomation::where('idacount',$request->idAcount)->count();
         if($table>0){
+            $data=verhicleInfomation::where('idacount',$request->idAcount)->get();
+            echo $data;
+        }
+    }
+    // đăng ký thông tin xe
+    public function RegisterVehicleInfomation(Request $request){
+        $table=new verhicleInfomation();
+        $table->producer=$request->producer;
+        $table->type=$request->type;
+        $table->capacity=$request->capacity;
+        $table->contermet=$request->contermet;
+        $table->idacount=$request->idacount;
+        $table->save();
+        if($table){
             echo "Success";
         }
+    }
+    // Update thông tin xe
+    public function UpdateVehicleInfomation(Request $request){
+        $table=verhicleInfomation::where('id',$request->idcar)->update(['producer'=>$request->producer,'type'=>$request->type,'capacity'=>$request->capacity,'contermet'=>$request->contermet]);
+        echo "Success";
+    }
+    // lấy dữ liệu services về dạng lịch sử 
+    public function getDataServices(Request $request){
+        $table=putforservices::where('idacount',$request->id)->get();
+        echo json_encode($table);
     }
 }

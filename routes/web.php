@@ -23,3 +23,9 @@ Route::get('model/accessories/getDataAccessories','Mycontroller@getDataAccessori
 Route::get('model/accessories/getDataAccessoriesAll','Mycontroller@getDataAccessoriesAll');
 
 Route::post('model/vehicleInformation/checkAcount','Mycontroller@checkAcount')->name("checkAcount");
+
+Route::post('model/vehicleInformation/RegisterVehicleInfomation','Mycontroller@RegisterVehicleInfomation')->name("RegisterVehicleInfomation");
+
+Route::post('model/vehicleInformation/UpdateVehicleInfomation','Mycontroller@UpdateVehicleInfomation')->name("UpdateVehicleInfomation");
+
+Route::post('model/services/getDataServices','Mycontroller@getDataServices')->name("getDataServices");

@@ -1,7 +1,7 @@
 
-<form action="{{route('checkAcount')}}" method="post">
+<form action="{{route('getDataServices')}}" method="post">
 	
-		<input type="text" name="idAcount"  placeholder="idAcount" /><br>
+		<input type="text" name="id"  placeholder="id" /><br>
 	
 	<button type="submit">gui</button>
 	
