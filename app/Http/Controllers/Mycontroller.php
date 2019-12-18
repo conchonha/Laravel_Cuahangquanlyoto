@@ -7,6 +7,7 @@ use App\account;
 use App\verhicleInfomation;
 use App\accessories;
 use App\putforservices;
+use App\services;
 class Mycontroller extends Controller
 {
 // dang nhap
@@ -67,8 +68,37 @@ class Mycontroller extends Controller
         echo "Success";
     }
     // lấy dữ liệu services về dạng lịch sử 
-    public function getDataServices(Request $request){
-        $table=putforservices::where('idacount',$request->id)->get();
+    public function getDataPutServices(Request $request){
+        if($request->loai=="0"){
+             $table=putforservices::join('services','putforservices.type','=','services.id')->where('putforservices.idacount',$request->id)->orderBy('putforservices.id','desc')->take(6)->get();
+             echo json_encode($table);
+        }else{
+             $table=putforservices::join('services','putforservices.type','=','services.id')->where('putforservices.idacount',$request->id)->orderBy('putforservices.id','desc')->get();
+             echo json_encode($table);
+        }
+       
+    }
+    // lấy dữ liệu danh sách tài khoản
+    public function getData(){
+        $table=account::orderBy('id','desc')->get();
         echo json_encode($table);
+    }
+    // lấy toàn bộ dịch vụ về
+    public function getDataServices(){
+        $table=services::all();
+        echo json_encode($table);
+    }
+    // đăng ký dịch vụ
+    public function registerServices(Request $request){
+        $table=new putforservices();
+        $table->putdate=$request->putdate;
+        $table->time=$request->time;
+        $table->speedometer=$request->speedometer;
+        $table->note=$request->note;
+        $table->type=$request->type;
+        $table->address=$request->address;
+        $table->idacount=$request->idacount;
+        $table->save();
+        echo "Success";
     }
 }

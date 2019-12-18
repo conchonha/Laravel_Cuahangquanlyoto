@@ -14,6 +14,13 @@
 Route::get('view', function () {
     return view('login');
 });
+
+Route::post('model/services/registerServices','Mycontroller@registerServices')->name("registerServices");
+
+Route::get('model/services/getDataServices','Mycontroller@getDataServices');
+
+Route::get('model/account/getData','Mycontroller@getData');
+
 Route::post('model/account/postLogin','Mycontroller@postLogin');
 
 Route::post('model/account/postRegister','Mycontroller@postRegister')->name("postRegister");
@@ -28,4 +35,4 @@ Route::post('model/vehicleInformation/RegisterVehicleInfomation','Mycontroller@R
 
 Route::post('model/vehicleInformation/UpdateVehicleInfomation','Mycontroller@UpdateVehicleInfomation')->name("UpdateVehicleInfomation");
 
-Route::post('model/services/getDataServices','Mycontroller@getDataServices')->name("getDataServices");
+Route::post('model/services/getDataPutServices','Mycontroller@getDataPutServices')->name("getDataPutServices");
